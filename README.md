@@ -10,10 +10,12 @@ You can also output the average rating of an element and output the rating per c
 
 ### IMPORTANT
 
-You must have the Comments plugin installed to use this plugin. Download it from https://github.com/engram-design/Comments
+You must have the Comments plugin installed to use this plugin. Download it from https://github.com/n-dw/Comments
+This is a forked version of comments where I add an on delete event for comments. 
 
 - Add the `commentsrating` directory into your `craft/plugins` directory.
 - Navigate to Settings -> Plugins and click the "Install" button.
+
 
 ## Templating
 
