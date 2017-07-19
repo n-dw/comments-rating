@@ -48,43 +48,30 @@ class CommentsRatingService extends BaseApplicationComponent
             }
             else
             {
-                $model = new CommentsRatingModel();
+                if(craft()->request->getPost('fields.commentsRating')){
+                    $model = new CommentsRatingModel();
 
-                $model->commentId = $comment->id;
-                $model->elementId = $comment->elementId;
-                $model->userId = $comment->userId;
-                $model->rating = craft()->request->getPost('fields.commentsRating');
-                $model->comment_approved = ($comment->status == 'approved');
+                    $model->commentId = $comment->id;
+                    $model->elementId = $comment->elementId;
+                    $model->userId = $comment->userId;
+                    $model->rating = craft()->request->getPost('fields.commentsRating');
+                    $model->comment_approved = ($comment->status == 'approved');
 
-                $commentRatingRecord = new CommentsRatingRecord;
+                    $commentRatingRecord = new CommentsRatingRecord;
 
-                $commentRatingRecord->commentId = $model->commentId;
-                $commentRatingRecord->elementId = $model->elementId;
-                $commentRatingRecord->userId = $model->userId;
-                $commentRatingRecord->rating = $model->rating;
-                $commentRatingRecord->comment_approved = $model->comment_approved;
+                    $commentRatingRecord->commentId = $model->commentId;
+                    $commentRatingRecord->elementId = $model->elementId;
+                    $commentRatingRecord->userId = $model->userId;
+                    $commentRatingRecord->rating = $model->rating;
+                    $commentRatingRecord->comment_approved = $model->comment_approved;
 
-                $commentRatingRecord->save();
+                    $commentRatingRecord->save();
 
-                return true;
+                    return true;
+                }
             }
 
         }
-        else
-        {
-            $model = new CommentsRatingModel();
-
-            $model->commentId = $comment->id;
-            $model->elementId = $comment->elementId;
-            $model->userId = $comment->userId;
-            $model->rating = craft()->request->getPost('fields.commentsRating');
-            $model->comment_approved = ($comment->status == 'approved');
-
-            $commentRatingRecord = new CommentsRatingRecord;
-            $commentRatingRecord->setAttributes($model->getAttributes());
-            $commentRatingRecord->save();
-        }
-	    
     }
     public function deleteRating($commentIds)
     {
@@ -94,7 +81,7 @@ class CommentsRatingService extends BaseApplicationComponent
             {
                 $record = CommentsRatingRecord::model()->findByAttributes(array('commentId' => $commentid));
 
-               if($record->delete()){
+               if(!is_null($record) && $record->delete()){
                    return true;
                }
 
