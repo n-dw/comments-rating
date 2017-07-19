@@ -15,10 +15,15 @@ class CommentsRatingPlugin extends BasePlugin
     public function init()
     {
 	    
-		craft()->on('comments.onSaveComment', function($event) {
-		    $comment = $event->params['comment'];
-		    craft()->commentsRating->createRating($comment);
-		});
+	craft()->on('comments.onSaveComment', function($event) {
+	    $comment = $event->params['comment'];
+	    craft()->commentsRating->createRating($comment);
+	});
+
+        craft()->on('comments.onTrashComment', function($event) {
+            $comment = $event->params['comment'];
+            craft()->commentsRating->createRating($comment);
+        });
 
         craft()->on('comments.onDeleteComment', function($event) {
             $comments = $event->params['commentIds'];
