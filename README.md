@@ -30,11 +30,15 @@ To get the rating for a comment you first need to be using the `form.html` Templ
 	
 	<label>Rating</label>
 	<select name="fields[commentsRating]">
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
-		<option value="5">5</option>
+		 <option value="2">1</option>
+                            <option value="3">1.5</option>
+                            <option value="4">2</option>
+                            <option value="5">2.5</option>
+                            <option value="6">3</option>
+                            <option value="7">3.5</option>
+                            <option value="8">4</option>
+                            <option value="9">4.5</option>
+                            <option value="10" selected>5</option>
 	</select>
 	
 	...
