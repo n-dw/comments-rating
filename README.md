@@ -2,7 +2,7 @@
 
 # Comments Rating :star:
 
-Comments Rating extends the functionality of Engram Design's Comments plugin :fire::100: (https://github.com/engram-design/Comments) by adding the ability to store a rating per comment.
+Comments Rating extends the functionality of Engram Design's Comments plugin (https://github.com/engram-design/Comments) by adding the ability to store a rating per comment.
 
 You can also output the average rating of an element and output the rating per comment.
 
